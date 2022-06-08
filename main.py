@@ -18,6 +18,14 @@ bot = Bot(token=os.environ["TOKEN"])
 dispatcher = Dispatcher(bot=bot, update_queue=None)
 dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
 
+def webhook(request):
+    if request.method == "POST":
+        update = telegram.Update.de_json(request.get_json(force=True), bot)
+        chat_id = update.message.chat.id
+        # Reply with the same message
+        bot.sendMessage(chat_id=chat_id, text=update.message.text)
+    return "ok"
+
 @app.post("/")
 def index() -> Response:
     dispatcher.process_update(
