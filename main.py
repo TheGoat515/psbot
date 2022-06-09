@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 def echo(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(update.message.text)
-
+TOKEN=5406891094:AAGyWdXTL_rIVLeoOqjL0NGmU82W1Rj1y7E
 bot = Bot(token=os.environ["TOKEN"])
 
 dispatcher = Dispatcher(bot=bot, update_queue=None)
