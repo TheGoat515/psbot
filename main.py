@@ -32,3 +32,5 @@ def index() -> Response:
         Update.de_json(request.get_json(force=True), bot))
 
     return "", http.HTTPStatus.NO_CONTENT
+
+webhook
