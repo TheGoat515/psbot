@@ -3,7 +3,7 @@ import os
 import telegram
 token="5406891094:AAGyWdXTL_rIVLeoOqjL0NGmU82W1Rj1y7E"
 def webhook(request):
-    bot = telegram.Bot(token=os.environ["TELEGRAM_TOKEN"])
+    bot = telegram.Bot(token)
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
         chat_id = update.message.chat.id
